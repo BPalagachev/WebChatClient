@@ -53,7 +53,7 @@ WebChat.Manager = (function () {
                     $(cnt).append(html);
                     $("#chat-body-" + reciever).data("channelName", data);
                     subscribePubnub(data, "chat-area-" + reciever);
-                } 
+                }
             });
         })
 
@@ -69,15 +69,18 @@ WebChat.Manager = (function () {
     }
 
     function CreateOrLoadUserName(username) {
-        userController.createUser(username);
-        isLogged = true;
+        userController.createUser(username).then(function () {
+            isLogged = true;
+        });
     }
 
     function DrawUI(container) {
         ClearPage(container);
         DrawOnlineUsers(container);
         setInterval(function () {
-            OpenPendingChats(container);
+            if (isLogged == true) {
+                OpenPendingChats(container);
+            }
         },
         1000);
     }

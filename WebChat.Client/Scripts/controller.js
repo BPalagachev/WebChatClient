@@ -13,7 +13,7 @@ WebChat.Controller = (function () {
         },
 
         createUser: function (userName) {
-            this.data.users.createUser(userName);
+            return this.data.users.createUser(userName);
         },
 
         getAllUsers: function () {
