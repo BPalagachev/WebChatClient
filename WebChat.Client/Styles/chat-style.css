@@ -1,0 +1,57 @@
+﻿body, div, li, a, ul, p, button
+{
+    margin: 0;
+    padding: 0;
+}
+
+/** {
+    border: 1px solid red;
+}*/
+
+div
+{
+    display: inline-block;
+    float: left;
+}
+
+.chat-container
+{
+    width: 250px;
+    margin: 15px;
+}
+
+.chat-area
+{
+    margin: 0 auto;
+    height: 300px;
+    width: 240px;
+}
+
+.input-area
+{
+    margin: 5px auto;
+    width: 200px;
+}
+
+a
+{
+    text-decoration: none;
+    color: #555555;
+    font-weight: bold;
+}
+
+    a:hover
+    {
+        text-decoration: underline;
+    }
+
+ul
+{
+    margin: 15px;
+}
+
+li
+{
+    list-style-type: none;
+    margin-bottom: 3px;
+}

@@ -76,9 +76,9 @@ WebChat.Manager = (function () {
 
     function DrawUI(container) {
         ClearPage(container);
-        DrawOnlineUsers(container);
         setInterval(function () {
             if (isLogged == true) {
+                DrawOnlineUsers();
                 OpenPendingChats(container);
             }
         },
@@ -86,16 +86,16 @@ WebChat.Manager = (function () {
     }
 
     function ClearPage(container) {
-        $(container).html("");
+        $(container).html("<div id='users-container'></div>");
     }
 
-    function DrawOnlineUsers(container) {
-        var html;
+    function DrawOnlineUsers() {
+        var html = '';
         var usersUl = WebChat.ClientUI.usersList().then(function (data) {
-            data += '</ul>';
-            data += '</div>';
-            html = data;
-            $(container).append(html);
+            html += data;
+            html += '</ul>';
+            html += '</div>';
+            $('#users-container').html(html);
         });
     }
 

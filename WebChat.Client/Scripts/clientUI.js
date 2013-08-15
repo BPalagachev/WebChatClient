@@ -23,13 +23,13 @@ WebChat.ClientUI = (function () {
             var html = '<div id="users-online-container">';
             html += '<ul id="users-ul">';
 
-           return userController.getAllUsers()
-            .then(function (data) {
-                $.each(data, function (i, val) {
-                    html += ("<li><a href='#' data-userId="+val.Id+" class='online-user'>"+ val.Name+"</a></li>");
-                });
-                return html;
-            });
+            return userController.getAllUsers()
+             .then(function (data) {
+                 $.each(data, function (i, val) {
+                     html += ("<li><a href='#' data-userId=" + val.Id + " class='online-user'>" + val.Name + "</a></li>");
+                 });
+                 return html;
+             });
         },
 
         chatContainer: function () {
@@ -38,12 +38,12 @@ WebChat.ClientUI = (function () {
         },
 
         charWindow: function (userId, recieverName) {
-            var html = '<div data-userId = "' + userId + '" id="chat-body-' + userId + '">';
+            var html = '<div class="chat-container" data-userId = "' + userId + '" id="chat-body-' + userId + '">';
             html += '<p>Chat with: ' + recieverName + '</p>';
-                html += '<textarea id="chat-area-' + userId + '"></textarea>';
-                html += '<input id="input-sendto-' + userId + '"/>';
-                html += '<button class="btn-send" id="btn-sendto-' + userId + '" data-userid="'+userId+'">Send</button>';
-                html += '</div>';
+            html += '<textarea disabled="disabled" class="chat-area" id="chat-area-' + userId + '"></textarea>';
+            html += '</br><input class="input-area" id="input-sendto-' + userId + '"/>';
+            html += '<button class="btn-send" id="btn-sendto-' + userId + '" data-userid="' + userId + '">Send</button>';
+            html += '</div>';
             return html;
         },
 
