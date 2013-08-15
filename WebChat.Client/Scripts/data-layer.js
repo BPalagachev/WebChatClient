@@ -1,5 +1,4 @@
 ﻿/// <reference path="q.js" />
-
 /// <reference path="class.js" />
 /// <reference path="http-requester.js" />
 var WebChat = WebChat || {};

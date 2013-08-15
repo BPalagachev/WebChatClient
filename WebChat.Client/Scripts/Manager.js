@@ -1,5 +1,4 @@
 ﻿/// <reference path="q.js" />
-
 /// <reference path="jquery-2.0.3.js" />
 /// <reference path="data-layer.js" />
 /// <reference path="controller.js" />

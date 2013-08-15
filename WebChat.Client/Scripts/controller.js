@@ -1,12 +1,11 @@
 ﻿/// <reference path="q.js" />
-
 /// <reference path="jquery-2.0.3.js" />
 /// <reference path="data-layer.js" />
 var WebChat = WebChat || {};
 
 WebChat.Controller = (function () {
-    //var serviceRoot = "http://bugsbunnywebchat-1.apphb.com/api/";
-    var serviceRoot = "http://localhost:58027/api/";
+    var serviceRoot = "http://bugsbunnywebchat-1.apphb.com/api/";
+    //var serviceRoot = "http://localhost:58027/api/";
 
     var UsersController = Class.create({
         init: function () {
