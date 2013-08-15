@@ -48,9 +48,12 @@ WebChat.Manager = (function () {
 
             channelController.openChannel(userId, reciever).then(function (data) {
                 var html = WebChat.ClientUI.charWindow(reciever, recieverName);
-                $(cnt).append(html);
-                $("#chat-body-" + reciever).data("channelName", data);
-                subscribePubnub(data, "chat-area-" + reciever);
+
+                if (!$("#chat-body-" + reciever).html()) {
+                    $(cnt).append(html);
+                    $("#chat-body-" + reciever).data("channelName", data);
+                    subscribePubnub(data, "chat-area-" + reciever);
+                } 
             });
         })
 
