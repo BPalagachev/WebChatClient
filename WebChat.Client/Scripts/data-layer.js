@@ -22,10 +22,13 @@ WebChat.Data = (function () {
             this.name;
         },
 
-        getOnlineUsers: function () {
-            var self = this;
+        getOnlineUsers: function (id) {
+            var requesturl = this.serviceRootUrl;
+            if (id) {
+                requesturl += ('?id=' + id);
+            }
 
-            return HttpRequester.getJson(this.serviceRootUrl);
+            return HttpRequester.getJson(requesturl);
         },
         createUser: function (username) {
             var self = this;
@@ -49,7 +52,14 @@ WebChat.Data = (function () {
 
         currentUserName: function () {
             return this.name;
+        },
+
+        // http://localhost:58027/api/Users?userId=276
+        logout: function (userId) {
+
+            return HttpRequester.postJson(this.serviceRootUrl + "?userId=" + userId, {});
         }
+
     });
 
     var ChannelsPersister = Class.create({

@@ -26,7 +26,10 @@ WebChat.ClientUI = (function () {
             return userController.getAllUsers()
              .then(function (data) {
                  $.each(data, function (i, val) {
-                     html += ("<li><a href='#' data-userId=" + val.Id + " class='online-user'>" + val.Name + "</a></li>");
+                     html += ("<li>" +
+                         "<img src='" + val.PictureUrl + "' height='20' width='20'>" +
+                         "<a href='#' data-userId=" + val.Id + " class='online-user'>" + val.Name + "</a>" +
+                         "</li>");
                  });
                  return html;
              });
@@ -47,6 +50,16 @@ WebChat.ClientUI = (function () {
             return html;
         },
 
+        userInfo: function (userName, picUrl) {
+            var html =
+                '<p>' +
+                '	<h1>Bugs Bunny\'s Favorite Web Chat</h2>' +
+                '	<img src="' + picUrl + '" height="42" width="42">' +
+                '	Hello, <span id="user-name">' + userName + '</span>' +
+                '	<button id="btn-user-logoff">log out</button>' +
+                '</p>';
 
+            return html;
+        }
     }
 }())

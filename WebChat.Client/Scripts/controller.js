@@ -5,7 +5,8 @@
 var WebChat = WebChat || {};
 
 WebChat.Controller = (function () {
-    var serviceRoot = "http://bugsbunnywebchat-1.apphb.com/api/";
+    //var serviceRoot = "http://bugsbunnywebchat-1.apphb.com/api/";
+    var serviceRoot = "http://localhost:58027/api/";
 
     var UsersController = Class.create({
         init: function () {
@@ -16,8 +17,8 @@ WebChat.Controller = (function () {
             return this.data.users.createUser(userName);
         },
 
-        getAllUsers: function () {
-            var allUsers = this.data.users.getOnlineUsers();
+        getAllUsers: function (id) {
+            var allUsers = this.data.users.getOnlineUsers(id);
             return allUsers;
         },
         
@@ -32,6 +33,10 @@ WebChat.Controller = (function () {
 
         userName: function () {
             return this.data.users.currentUserName();
+        },
+
+        logout: function (userId) {
+            return this.data.users.logout(userId);
         }
 
     });

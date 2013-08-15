@@ -15,6 +15,7 @@ WebChat.Manager = (function () {
 
     function buildUi(containter) {
         cnt = containter;
+        isLogged = false;
 
         attachEvents(containter);
 
@@ -66,11 +67,23 @@ WebChat.Manager = (function () {
             publish(channelName, "#input-sendto-" + reciever);
 
         });
+
+        $(containter).on("click", "#btn-user-logoff", function (ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+
+            var userId = userController.currentUserId();
+            userController.logout(userId).then(function () {
+                ClearPage(cnt);
+                buildUi(cnt);
+            });
+        });
     }
 
     function CreateOrLoadUserName(username) {
         userController.createUser(username).then(function () {
             isLogged = true;
+            DrawUserInfo(cnt);
         });
     }
 
@@ -89,13 +102,29 @@ WebChat.Manager = (function () {
         $(container).html("<div id='users-container'></div>");
     }
 
+    function DrawUserInfo(container) {
+        var userId = userController.currentUserId();
+        userController.getAllUsers(userId).then(function (data) {
+            var picUrl = data[0].PictureUrl;
+            var userName = data[0].Name;
+            var html = WebChat.ClientUI.userInfo(userName, picUrl);
+            $(container).prepend(html);
+        });
+        
+        
+    }
+
     function DrawOnlineUsers() {
         var html = '';
         var usersUl = WebChat.ClientUI.usersList().then(function (data) {
             html += data;
             html += '</ul>';
             html += '</div>';
-            $('#users-container').html(html);
+            var selector = "li a[data-userid='" + userController.currentUserId() + "']";
+
+            $(selector).html('');
+            var text = $(html);
+            $('#users-container').html(text);
         });
     }
 
@@ -112,11 +141,12 @@ WebChat.Manager = (function () {
                 var creatorName = data[i].UserName;
                 var creatorId = data[i].UserId;
 
-                var html = WebChat.ClientUI.charWindow(creatorId, creatorName);
-                $(cnt).append(html);
-                $("#chat-body-" + creatorId).data("channelName", data[i].Name);
-                subscribePubnub(data[i].Name, "chat-area-" + creatorId);
-
+                if (!$("#chat-body-" + creatorId).html()) {
+                    var html = WebChat.ClientUI.charWindow(creatorId, creatorName);
+                    $(cnt).append(html);
+                    $("#chat-body-" + creatorId).data("channelName", data[i].Name);
+                    subscribePubnub(data[i].Name, "chat-area-" + creatorId);
+                }
             }
         });
     }

@@ -55,3 +55,7 @@ li
     list-style-type: none;
     margin-bottom: 3px;
 }
+
+    li a[data-userid='259'] {
+        border: 1px solid red;
+    }
