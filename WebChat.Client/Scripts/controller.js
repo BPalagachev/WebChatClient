@@ -21,6 +21,7 @@ WebChat.Controller = (function () {
             return allUsers;
         },
         
+
         currentUser: function (name) {
             return this.data.users.getUserId(name);
         },
