@@ -63,3 +63,11 @@ li
     li a[data-userid='259'] {
         border: 1px solid red;
     }
+
+button {
+    padding: 2px 8px;
+}
+
+.hidden {
+    display: none;
+}

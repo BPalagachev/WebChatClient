@@ -35,6 +35,7 @@ WebChat.Controller = (function () {
         },
 
         logout: function (userId) {
+            this.data.users.logout();
             return this.data.users.logout(userId);
         }
 

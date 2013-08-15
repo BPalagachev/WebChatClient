@@ -53,7 +53,10 @@ WebChat.Data = (function () {
             return this.name;
         },
 
-        // http://localhost:58027/api/Users?userId=276
+        logoutUser: function(){
+            this.name = undefined;
+        },
+
         logout: function (userId) {
 
             return HttpRequester.postJson(this.serviceRootUrl + "?userId=" + userId, {});

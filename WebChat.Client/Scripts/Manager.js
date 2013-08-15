@@ -73,10 +73,50 @@ WebChat.Manager = (function () {
 
             var userId = userController.currentUserId();
             userController.logout(userId).then(function () {
+                isLogged = false;
                 ClearPage(cnt);
                 buildUi(cnt);
             });
         });
+
+        $(containter).on("click", "#btn-pic-file", function (ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            if ($('#pic-form').hasClass('hidden')) {
+                $('#pic-form').removeClass()
+            } else {
+                $('#pic-form').addClass('hidden')
+            }
+        });
+
+        $(containter).on("click", "#btn-pic-upload", function (ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+
+            var userId = userController.currentUserId();
+            var picPath = $('#input-file-pic').val();
+            //$('#input-file-pic').val('');
+            $('#pic-form').addClass('hidden');
+            var index = picPath.lastIndexOf('\\');
+            var path = picPath.substring(0, index);
+            var fileName = picPath.substring(index + 1, picPath.length);
+
+            var data = {
+                Name: fileName,
+                Path: path,
+                UserId: userId,
+                IsProfilePic: true,
+                RecieverId: 0
+            };
+
+            HttpRequester.postJson("http://bugsbunnywebchat-1.apphb.com/api/messages", data).then(function () {
+                $("#header").remove();
+                DrawUserInfo(cnt);
+            });
+            
+        });
+
+        
     }
 
     function CreateOrLoadUserName(username) {

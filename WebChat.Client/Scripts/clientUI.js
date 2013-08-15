@@ -51,12 +51,14 @@ WebChat.ClientUI = (function () {
 
         userInfo: function (userName, picUrl) {
             var html =
-                '<p>' +
-                '	<h1>Bugs Bunny\'s Favorite Web Chat</h2>' +
-                '	<img src="' + picUrl + '" height="42" width="42">' +
-                '	Hello, <span id="user-name">' + userName + '</span>' +
-                '	<button id="btn-user-logoff">log out</button>' +
-                '</p>';
+                '<form id="header" >' +
+                '   <h1>Bugs Bunny\'s Favorite Web Chat</h1>' +
+                '   <img src="' + picUrl + '" height="42" width="42" id="btn-pic-file"/>' +
+                '   <p id="pic-form" class="hidden"><input id="input-file-pic"/>'+
+                '<button id="btn-pic-upload">Upload</button></p>' +
+                'Hello, <span id="user-name">' + userName + '</span>' +
+                '<button id="btn-user-logoff">log out</button>' +
+                '</form>';
 
             return html;
         }
