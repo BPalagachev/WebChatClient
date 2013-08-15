@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web Chat - Bugs Bunny :)</title>
+</head>
+<body>
+    <div
+		pub-key="pub-c-4edf8554-5df2-4ef1-98dc-e52cba494052"
+		sub-key="sub-c-0fa139cc-04bf-11e3-a5e8-02ee2ddab7fe"
+        sec-key="sec-c-ZDZmOWJhZDYtMjFjZS00OGM3LTkzNDMtYzBlMWY4OTUwNTc1"
+        ssl="off" origin="pubsub.pubnub.com" id="pubnub">
+    </div>
+    <div id="wrapper">
+    </div>
+
+
+
+    <script src='http://cdn.pubnub.com/pubnub-3.5.3.min.js'></script>
+    <script src="Scripts/q.js"></script>
+    <script src="Scripts/jquery-2.0.3.js"></script>
+    <script src="Scripts/class.js"></script>
+    <script src="Scripts/http-requester.js"></script>
+    <script src="Scripts/data-layer.js"></script>
+    <script src="http://cdn.pubnub.com/pubnub-3.5.3.min.js"></script>
+    <script src="Scripts/controller.js"></script>
+    <script src="Scripts/clientUI.js"></script>
+    <script src="Scripts/Manager.js"></script>
+
+    <script>
+
+        WebChat.Manager.buildUi("#wrapper")
+        //var userController = WebChat.Controller.getUserController();
+        //userController.createUser("Testov potrebitel Nomer 2");
+        //var allUsers = userController.getAllUsers()
+        //    .then(function(data){
+        //        $.each(data, function(i, val){
+        //            $("#users")
+        //                .append("<li> Id:" + val.Id + " UserName: " + val.Name + "</li>");
+        //        })
+        //    })
+        //userController.currentUser("Testov potrebitel Nomer 1")
+        //    .then(function(data){
+        //        console.log(data);
+        //    });
+
+        //var channelController = WebChat.Controller.getChannelsController();
+        //channelController.openChannel(19, 20);
+        //channelController.returnOpenedChannels(20).then(function (data) {
+        //    console.log(data);
+        //});
+    </script>
+</body>
+</html>
