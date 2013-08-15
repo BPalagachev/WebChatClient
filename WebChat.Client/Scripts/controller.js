@@ -5,7 +5,7 @@
 var WebChat = WebChat || {};
 
 WebChat.Controller = (function () {
-    var serviceRoot = "http://localhost:58027/api/";
+    var serviceRoot = "http://bugsbunnywebchat-1.apphb.com/api/";
 
     var UsersController = Class.create({
         init: function () {
